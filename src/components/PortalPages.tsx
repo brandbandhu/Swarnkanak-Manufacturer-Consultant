@@ -692,12 +692,12 @@ export function AdminPage() {
         subtitle="Manage customers, orders, quotations, enquiries, tickets and portal content."
       />
       <Breadcrumbs items={[{ label: "Admin" }]} />
-      <div className="container-x grid gap-6 py-12 lg:grid-cols-[240px_minmax(0,1fr)]">
-        <aside className="lg:sticky lg:top-24 lg:self-start">
+      <div className="container-x grid gap-6 py-8 md:grid-cols-[220px_minmax(0,1fr)] lg:grid-cols-[240px_minmax(0,1fr)] lg:py-12">
+        <aside className="md:sticky md:top-24 md:self-start">
           <Card>
             <CardContent className="p-3">
               <nav
-                className="flex gap-2 overflow-x-auto lg:flex-col lg:overflow-visible"
+                className="flex gap-2 overflow-x-auto md:flex-col md:overflow-visible"
                 aria-label="Admin sections"
               >
                 {adminSections.map((section) => {
@@ -708,7 +708,7 @@ export function AdminPage() {
                       key={section.id}
                       type="button"
                       onClick={() => setActiveSection(section.id)}
-                      className={`${ADMIN_SECTION_BUTTON} min-w-max lg:min-w-0 ${selected ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"}`}
+                      className={`${ADMIN_SECTION_BUTTON} min-w-max md:min-w-0 ${selected ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"}`}
                       aria-current={selected ? "page" : undefined}
                     >
                       <Icon className="size-4 shrink-0" />
@@ -780,7 +780,7 @@ export function AdminPage() {
             </>
           )}
           {activeSection === "products" && (
-            <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
+            <div className="grid gap-6 2xl:grid-cols-[0.95fr_1.05fr]">
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
@@ -1008,7 +1008,7 @@ export function AdminPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="grid gap-3 sm:grid-cols-[1fr_220px]">
+                  <div className="grid gap-3 xl:grid-cols-[1fr_220px]">
                     <div className="relative">
                       <Search className="pointer-events-none absolute left-3 top-3 size-4 text-muted-foreground" />
                       <Input
@@ -1127,7 +1127,7 @@ export function AdminPage() {
                 {orders.slice(0, 6).map((order) => (
                   <div
                     key={order.id}
-                    className="grid gap-3 rounded-md border p-3 md:grid-cols-[1fr_210px_150px]"
+                    className="grid gap-3 rounded-md border p-3 xl:grid-cols-[1fr_210px_150px]"
                   >
                     <div>
                       <p className="font-semibold">{order.id}</p>
@@ -1180,7 +1180,7 @@ export function AdminPage() {
                 {quotations.slice(0, 6).map((quote) => (
                   <div
                     key={quote.id}
-                    className="grid gap-3 rounded-md border p-3 lg:grid-cols-[1fr_190px_160px_110px]"
+                    className="grid gap-3 rounded-md border p-3 2xl:grid-cols-[1fr_190px_160px_110px]"
                   >
                     <div>
                       <p className="font-semibold">{quote.productName}</p>

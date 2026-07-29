@@ -160,14 +160,14 @@
 }
 
 @utility section-y {
-  padding-block: 3.5rem;
+  padding-block: clamp(2.5rem, 6vw, 3.5rem);
 }
 
 @utility container-x {
   width: 100%;
   margin-inline: auto;
   max-width: 80rem;
-  padding-inline: 1rem;
+  padding-inline: clamp(1rem, 3vw, 1.5rem);
 }
 
 @utility hero-overlay {
@@ -180,11 +180,7 @@
 }
 
 @utility text-gradient-brand {
-  background: linear-gradient(
-    92deg,
-    var(--color-primary) 0%,
-    var(--color-warning) 100%
-  );
+  background: linear-gradient(92deg, var(--color-primary) 0%, var(--color-warning) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

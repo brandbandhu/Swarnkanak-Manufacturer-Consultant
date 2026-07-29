@@ -153,11 +153,11 @@ function Home() {
           />
         ))}
         <div className="absolute inset-0 hero-overlay" />
-        <div className="container-x relative flex min-h-[520px] flex-col justify-center py-16 text-charcoal-foreground md:min-h-[620px]">
+        <div className="container-x relative flex min-h-[460px] flex-col justify-center py-12 text-charcoal-foreground sm:min-h-[520px] md:min-h-[620px] md:py-16">
           <Badge className="w-fit bg-primary text-primary-foreground">
             Monsoon Offer · Up to 15% Off
           </Badge>
-          <h1 className="mt-5 max-w-3xl font-display text-3xl font-bold leading-tight md:text-5xl">
+          <h1 className="mt-5 max-w-3xl font-display text-3xl leading-tight font-bold sm:text-4xl md:text-5xl">
             Powering Modern Agriculture with Reliable Machinery
           </h1>
           <p className="mt-4 max-w-2xl text-base text-charcoal-foreground/85 md:text-lg">
@@ -168,20 +168,20 @@ function Home() {
             {banner?.heading}
           </p>
           <p className="text-sm text-charcoal-foreground/80">{banner?.subheading}</p>
-          <div className="mt-7 flex flex-wrap gap-3">
-            <Button size="lg" asChild>
+          <div className="mt-7 grid gap-3 sm:flex sm:flex-wrap">
+            <Button size="lg" asChild className="w-full sm:w-auto">
               <Link to="/products">
                 Explore Products <ArrowRight className="size-4" />
               </Link>
             </Button>
-            <Button size="lg" variant="secondary" asChild>
+            <Button size="lg" variant="secondary" asChild className="w-full sm:w-auto">
               <Link to="/contact">Request a Quotation</Link>
             </Button>
             <Button
               size="lg"
               variant="outline"
               asChild
-              className="bg-card/10 text-charcoal-foreground hover:bg-card hover:text-foreground"
+              className="w-full bg-card/10 text-charcoal-foreground hover:bg-card hover:text-foreground sm:w-auto"
             >
               <Link to="/dealer-enquiry">Enquire Now</Link>
             </Button>
@@ -250,13 +250,18 @@ function Home() {
                 <div className="p-5">
                   <h3 className="font-display text-base font-semibold">{c.name}</h3>
                   <p className="mt-1.5 line-clamp-2 text-sm text-muted-foreground">{c.blurb}</p>
-                  <div className="mt-4 flex gap-2">
-                    <Button size="sm" asChild>
+                  <div className="mt-4 grid gap-2 min-[420px]:flex">
+                    <Button size="sm" asChild className="w-full min-[420px]:w-auto">
                       <Link to="/products" search={{ category: c.name }}>
                         View Products
                       </Link>
                     </Button>
-                    <Button size="sm" variant="outline" asChild>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      asChild
+                      className="w-full min-[420px]:w-auto"
+                    >
                       <Link to="/contact">Enquire</Link>
                     </Button>
                   </div>
@@ -392,9 +397,13 @@ function Home() {
       <section className="section-y bg-muted/50">
         <div className="container-x">
           <SectionHead eyebrow="Best-Selling Machinery" title="Farmer Favourites" />
-          <div className="mt-8 flex snap-x gap-5 overflow-x-auto pb-4">
+          <div className="mt-8 flex snap-x gap-4 overflow-x-auto pb-4 sm:gap-5">
             {bestsellers.map((p) => (
-              <ProductCard key={p.id} product={p} className="w-[280px] shrink-0 snap-start" />
+              <ProductCard
+                key={p.id}
+                product={p}
+                className="w-[min(82vw,280px)] shrink-0 snap-start"
+              />
             ))}
           </div>
         </div>
@@ -429,7 +438,7 @@ function Home() {
                     <p className="text-xs text-muted-foreground">
                       Valid till {new Date(o.validTill).toLocaleDateString("en-IN")}
                     </p>
-                    <div className="flex items-center gap-2 pt-1">
+                    <div className="flex flex-wrap items-center gap-2 pt-1">
                       <code className="rounded-md border border-dashed border-primary px-2 py-1 text-xs font-semibold text-primary">
                         {o.code}
                       </code>
@@ -582,16 +591,26 @@ function Home() {
             Our consultants match implements to your tractor horsepower, soil type and crop cycle —
             free of cost. Typical response time is under 2 working hours.
           </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Button size="lg" asChild>
+          <div className="grid w-full max-w-md gap-3 sm:flex sm:max-w-none sm:flex-wrap sm:justify-center">
+            <Button size="lg" asChild className="w-full sm:w-auto">
               <Link to="/contact">Talk to an Expert</Link>
             </Button>
-            <Button size="lg" variant="outline" asChild className="bg-card text-foreground">
+            <Button
+              size="lg"
+              variant="outline"
+              asChild
+              className="w-full bg-card text-foreground sm:w-auto"
+            >
               <Link to="/contact">
                 <Phone className="size-4" /> Request a Call Back
               </Link>
             </Button>
-            <Button size="lg" variant="outline" asChild className="bg-card text-foreground">
+            <Button
+              size="lg"
+              variant="outline"
+              asChild
+              className="w-full bg-card text-foreground sm:w-auto"
+            >
               <a href="https://wa.me/919999900000" target="_blank" rel="noreferrer">
                 <MessageCircle className="size-4" /> WhatsApp Us
               </a>

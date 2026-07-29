@@ -55,8 +55,8 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full">
       <div className="bg-charcoal text-charcoal-foreground">
-        <div className="container-x flex h-9 items-center justify-between gap-4 text-xs">
-          <div className="flex items-center gap-4">
+        <div className="container-x flex h-9 items-center justify-center gap-4 text-xs sm:justify-between">
+          <div className="hidden items-center gap-4 sm:flex">
             <a href="tel:+919999900000" className="flex items-center gap-1.5 hover:text-primary">
               <Phone className="size-3.5" /> +91 99999 00000
             </a>
@@ -86,13 +86,25 @@ export function Header() {
         <div className="container-x flex h-16 items-center gap-3 md:h-20 md:gap-6">
           <Sheet open={mobile} onOpenChange={setMobile}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open menu">
+              <Button variant="ghost" size="icon" className="xl:hidden" aria-label="Open menu">
                 <Menu className="size-5" />
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-[85vw] max-w-sm overflow-y-auto">
               <SheetTitle className="px-4 pt-4 font-display">Menu</SheetTitle>
               <nav className="flex flex-col gap-1 p-4">
+                <form onSubmit={search} className="mb-3">
+                  <div className="relative">
+                    <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+                    <Input
+                      value={q}
+                      onChange={(e) => setQ(e.target.value)}
+                      placeholder="Search machinery"
+                      aria-label="Search products"
+                      className="pl-9"
+                    />
+                  </div>
+                </form>
                 {NAV.map((n) => (
                   <Link
                     key={n.to}
@@ -129,13 +141,13 @@ export function Header() {
             </span>
             <span className="leading-tight">
               <span className="block font-display text-base font-bold md:text-lg">Swarnkanak</span>
-              <span className="block text-[10px] uppercase tracking-wider text-muted-foreground md:text-[11px]">
+              <span className="hidden text-[10px] uppercase tracking-wider text-muted-foreground sm:block md:text-[11px]">
                 Manufacturer &amp; Consultant
               </span>
             </span>
           </Link>
 
-          <form onSubmit={search} className="ml-auto hidden max-w-md flex-1 md:block">
+          <form onSubmit={search} className="ml-auto hidden max-w-md flex-1 lg:block">
             <div className="relative">
               <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
               <Input
@@ -220,7 +232,7 @@ export function Header() {
                 <Button variant="outline" asChild className="hidden sm:inline-flex">
                   <Link to="/login">Login</Link>
                 </Button>
-                <Button asChild>
+                <Button asChild className="hidden min-[420px]:inline-flex">
                   <Link to="/register">Register</Link>
                 </Button>
               </>
@@ -229,7 +241,7 @@ export function Header() {
         </div>
       </div>
 
-      <div className="hidden border-b bg-charcoal text-charcoal-foreground lg:block">
+      <div className="hidden border-b bg-charcoal text-charcoal-foreground xl:block">
         <div className="container-x flex h-12 items-center gap-1">
           {NAV.map((n) =>
             n.label === "Products" ? (

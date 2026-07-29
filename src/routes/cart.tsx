@@ -59,18 +59,18 @@ function CartPage() {
             </CardContent>
           </Card>
         ) : (
-          <div className="grid gap-8 lg:grid-cols-[1fr_340px]">
+          <div className="grid gap-6 xl:grid-cols-[1fr_340px] xl:gap-8">
             <div className="space-y-4">
               {cartLines.map(({ product, qty }) => (
                 <Card key={product.id}>
-                  <CardContent className="flex flex-col gap-4 p-4 sm:flex-row">
+                  <CardContent className="flex flex-col gap-4 p-4 md:flex-row">
                     <img
                       src={product.image}
                       alt={product.name}
                       loading="lazy"
                       width={800}
                       height={600}
-                      className="h-28 w-full rounded-md object-cover sm:w-40"
+                      className="h-36 w-full rounded-md object-cover md:h-28 md:w-40"
                     />
                     <div className="flex-1">
                       <Link
@@ -84,7 +84,7 @@ function CartPage() {
                         SKU {product.sku} · {product.category}
                       </p>
                       <p className="mt-2 font-semibold">{formatINR(product.offerPrice)}</p>
-                      <div className="mt-3 flex flex-wrap items-center gap-3">
+                      <div className="mt-3 flex flex-col items-stretch gap-2 min-[420px]:flex-row min-[420px]:flex-wrap min-[420px]:items-center">
                         <div className="flex items-center rounded-md border">
                           <Button
                             variant="ghost"
@@ -127,7 +127,7 @@ function CartPage() {
                         </Button>
                       </div>
                     </div>
-                    <p className="font-display text-lg font-bold sm:self-center">
+                    <p className="font-display text-lg font-bold md:self-center">
                       {formatINR(product.offerPrice * qty)}
                     </p>
                   </CardContent>
@@ -158,7 +158,7 @@ function CartPage() {
                   <span>Grand total</span>
                   <span>{formatINR(total)}</span>
                 </div>
-                <div className="flex gap-2 pt-2">
+                <div className="flex flex-col gap-2 pt-2 min-[420px]:flex-row">
                   <Input
                     value={coupon}
                     onChange={(e) => setCoupon(e.target.value)}
@@ -167,6 +167,7 @@ function CartPage() {
                   />
                   <Button
                     variant="outline"
+                    className="min-[420px]:shrink-0"
                     onClick={() => {
                       const code = coupon.trim().toUpperCase();
                       if (code === "MONSOON15") {

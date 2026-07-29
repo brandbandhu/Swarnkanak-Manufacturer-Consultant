@@ -33,8 +33,8 @@ export function Breadcrumbs({ items }: { items: { label: string; to?: string }[]
 export function PageHeading({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
     <section className="bg-charcoal text-charcoal-foreground">
-      <div className="container-x py-10 md:py-14">
-        <h1 className="font-display text-3xl font-bold md:text-4xl">{title}</h1>
+      <div className="container-x py-8 md:py-14">
+        <h1 className="font-display text-2xl font-bold sm:text-3xl md:text-4xl">{title}</h1>
         {subtitle && (
           <p className="mt-3 max-w-2xl text-sm text-charcoal-foreground/80 md:text-base">
             {subtitle}

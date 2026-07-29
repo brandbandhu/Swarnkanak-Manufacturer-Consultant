@@ -84,7 +84,7 @@ function Checkout() {
       <PageHeading title="Checkout" subtitle="Six quick steps to place your machinery order." />
       <Breadcrumbs items={[{ label: "Cart", to: "/cart" }, { label: "Checkout" }]} />
 
-      <div className="container-x grid gap-8 py-10 lg:grid-cols-[1fr_340px]">
+      <div className="container-x grid gap-6 py-8 xl:grid-cols-[1fr_340px] xl:gap-8 xl:py-10">
         <div>
           <ol className="mb-6 flex flex-wrap gap-2 text-xs">
             {STEPS.map((s, i) => (
@@ -105,7 +105,7 @@ function Checkout() {
                   <p className="text-sm text-muted-foreground">
                     Logging in lets you track orders, download invoices and reorder faster.
                   </p>
-                  <div className="flex gap-2">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
                     <Button asChild>
                       <Link to="/login">Login</Link>
                     </Button>
@@ -252,7 +252,7 @@ function Checkout() {
                 </div>
               )}
 
-              <div className="flex justify-between pt-2">
+              <div className="flex flex-col-reverse gap-2 pt-2 sm:flex-row sm:justify-between">
                 <Button
                   variant="outline"
                   disabled={step === 0}

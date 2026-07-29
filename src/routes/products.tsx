@@ -132,7 +132,7 @@ function ProductsPage() {
         ]}
       />
 
-      <div className="container-x grid gap-8 py-10 lg:grid-cols-[260px_1fr]">
+      <div className="container-x grid gap-6 py-8 lg:grid-cols-[260px_1fr] lg:gap-8 lg:py-10">
         <aside className="space-y-6">
           <Card>
             <CardContent className="space-y-4 p-5">
@@ -226,12 +226,12 @@ function ProductsPage() {
         </aside>
 
         <section>
-          <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
             <p className="text-sm text-muted-foreground">{filtered.length} products found</p>
-            <div className="flex items-center gap-2">
+            <div className="grid grid-cols-[1fr_auto_auto] items-center gap-2">
               <select
                 aria-label="Sort products"
-                className="h-9 rounded-md border bg-card px-3 text-sm"
+                className="h-9 min-w-0 rounded-md border bg-card px-3 text-sm"
                 value={search.sort ?? "featured"}
                 onChange={(e) => setSearch({ sort: e.target.value })}
               >

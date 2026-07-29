@@ -7,8 +7,8 @@ import { CATEGORIES } from "@/lib/catalog";
 
 export function Footer() {
   return (
-    <footer className="mt-16 bg-charcoal text-charcoal-foreground">
-      <div className="container-x grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
+    <footer className="mt-10 bg-charcoal text-charcoal-foreground md:mt-16">
+      <div className="container-x grid gap-8 py-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-10 lg:py-14">
         <div>
           <div className="flex items-center gap-2">
             <span className="grid size-10 place-items-center rounded-md bg-primary font-display text-lg font-bold text-primary-foreground">
@@ -50,7 +50,7 @@ export function Footer() {
           </ul>
         </div>
 
-        <div className="grid grid-cols-2 gap-8 lg:grid-cols-1">
+        <div className="grid gap-8 min-[420px]:grid-cols-2 lg:grid-cols-1">
           <div>
             <h4 className="font-display text-sm font-semibold uppercase tracking-wide">
               Quick Links
@@ -142,7 +142,7 @@ export function Footer() {
             </li>
           </ul>
           <form
-            className="mt-5 flex gap-2"
+            className="mt-5 flex flex-col gap-2 min-[420px]:flex-row"
             onSubmit={(e) => {
               e.preventDefault();
               (e.currentTarget as HTMLFormElement).reset();
@@ -156,7 +156,9 @@ export function Footer() {
               aria-label="Newsletter email"
               className="bg-card text-foreground"
             />
-            <Button type="submit">Join</Button>
+            <Button type="submit" className="min-[420px]:shrink-0">
+              Join
+            </Button>
           </form>
         </div>
       </div>

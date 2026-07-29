@@ -64,7 +64,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
         </p>
 
         <div className="mt-auto space-y-3 pt-2">
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             {product.purchaseMode === "quotation" ? (
               <span className="font-display text-lg font-semibold text-secondary">
                 Price on Request
@@ -94,10 +94,10 @@ export function ProductCard({ product, className }: { product: Product; classNam
               ★ {product.rating} ({product.reviews})
             </span>
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-col gap-2 min-[420px]:flex-row">
             {product.purchaseMode === "direct" ? (
               <Button
-                className="flex-1"
+                className="w-full flex-1"
                 onClick={() => {
                   addToCart(product.id);
                   toast.success("Added to cart", { description: product.name });
@@ -106,7 +106,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
                 <ShoppingCart className="size-4" /> Add to Cart
               </Button>
             ) : (
-              <Button className="flex-1" asChild>
+              <Button className="w-full flex-1" asChild>
                 <Link to="/products/$slug" params={{ slug: product.slug }}>
                   <FileText className="size-4" /> Request Quote
                 </Link>

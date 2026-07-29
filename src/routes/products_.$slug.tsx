@@ -81,7 +81,7 @@ function ProductDetail() {
         ]}
       />
 
-      <div className="container-x grid gap-10 py-10 lg:grid-cols-2">
+      <div className="container-x grid gap-8 py-8 lg:grid-cols-2 lg:gap-10 lg:py-10">
         <div>
           <div className="overflow-hidden rounded-xl border bg-card">
             <img
@@ -92,7 +92,7 @@ function ProductDetail() {
               className="aspect-[4/3] w-full object-cover transition-transform duration-500 hover:scale-110"
             />
           </div>
-          <div className="mt-3 grid grid-cols-4 gap-3">
+          <div className="mt-3 grid grid-cols-4 gap-2 sm:gap-3">
             {[0, 1, 2, 3].map((i) => (
               <img
                 key={i}
@@ -153,8 +153,8 @@ function ProductDetail() {
 
           <p className="mt-5 text-sm text-muted-foreground">{product.shortDesc}</p>
 
-          <div className="mt-6 flex flex-wrap items-center gap-3">
-            <div className="flex items-center rounded-md border">
+          <div className="mt-6 grid gap-3 min-[460px]:flex min-[460px]:flex-wrap min-[460px]:items-center">
+            <div className="flex w-fit items-center rounded-md border">
               <Button
                 variant="ghost"
                 size="icon"
@@ -176,6 +176,7 @@ function ProductDetail() {
             {product.purchaseMode === "direct" && (
               <>
                 <Button
+                  className="w-full min-[460px]:w-auto"
                   onClick={() => {
                     addToCart(product.id, qty);
                     toast.success("Added to cart");
@@ -183,13 +184,19 @@ function ProductDetail() {
                 >
                   <ShoppingCart className="size-4" /> Add to Cart
                 </Button>
-                <Button variant="secondary" asChild onClick={() => addToCart(product.id, qty)}>
+                <Button
+                  variant="secondary"
+                  asChild
+                  className="w-full min-[460px]:w-auto"
+                  onClick={() => addToCart(product.id, qty)}
+                >
                   <Link to="/checkout">Buy Now</Link>
                 </Button>
               </>
             )}
             <Button
               variant="outline"
+              className="w-full min-[460px]:w-auto"
               onClick={() => {
                 toggleWishlist(product.id);
                 toast.success(saved ? "Removed from wishlist" : "Saved to wishlist");
@@ -199,10 +206,12 @@ function ProductDetail() {
             </Button>
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-3">
+          <div className="mt-4 grid gap-3 min-[460px]:flex min-[460px]:flex-wrap">
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="secondary">Request Quotation</Button>
+                <Button variant="secondary" className="w-full min-[460px]:w-auto">
+                  Request Quotation
+                </Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
@@ -238,7 +247,7 @@ function ProductDetail() {
               </DialogContent>
             </Dialog>
 
-            <Button variant="outline" asChild>
+            <Button variant="outline" asChild className="w-full min-[460px]:w-auto">
               <a
                 href={`https://wa.me/919999900000?text=${encodeURIComponent("Enquiry about " + product.name)}`}
                 target="_blank"
@@ -249,6 +258,7 @@ function ProductDetail() {
             </Button>
             <Button
               variant="outline"
+              className="w-full min-[460px]:w-auto"
               onClick={() => {
                 void navigator.clipboard?.writeText(window.location.href);
                 toast.success("Product link copied");
@@ -258,6 +268,7 @@ function ProductDetail() {
             </Button>
             <Button
               variant="outline"
+              className="w-full min-[460px]:w-auto"
               onClick={() => toast.success("Brochure download started (demo PDF)")}
             >
               <Download className="size-4" /> Brochure
@@ -269,7 +280,7 @@ function ProductDetail() {
               <p className="flex items-center gap-2 text-sm font-semibold">
                 <Truck className="size-4 text-secondary" /> Delivery location checker
               </p>
-              <div className="flex gap-2">
+              <div className="flex flex-col gap-2 min-[420px]:flex-row">
                 <Input
                   value={pin}
                   onChange={(e) => setPin(e.target.value)}
@@ -279,6 +290,7 @@ function ProductDetail() {
                 />
                 <Button
                   variant="outline"
+                  className="min-[420px]:shrink-0"
                   onClick={() =>
                     setPinMsg(
                       /^\d{6}$/.test(pin)
@@ -291,7 +303,7 @@ function ProductDetail() {
                 </Button>
               </div>
               {pinMsg && <p className="text-sm text-muted-foreground">{pinMsg}</p>}
-              <p className="flex items-center gap-2 text-sm text-muted-foreground">
+              <p className="flex items-start gap-2 text-sm text-muted-foreground">
                 <ShieldCheck className="size-4 text-success" /> {product.warranty} warranty · Free
                 installation guidance · Genuine spares
               </p>
@@ -302,7 +314,7 @@ function ProductDetail() {
 
       <div className="container-x pb-10">
         <Tabs defaultValue="desc">
-          <TabsList className="flex-wrap">
+          <TabsList className="h-auto flex-wrap justify-start">
             <TabsTrigger value="desc">Description</TabsTrigger>
             <TabsTrigger value="specs">Specifications</TabsTrigger>
             <TabsTrigger value="reviews">Reviews</TabsTrigger>

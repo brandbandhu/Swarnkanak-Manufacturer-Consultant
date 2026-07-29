@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "@/lib/router-compat";
 import { ArrowUp, MessageCircle, Phone, ChevronRight } from "lucide-react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
@@ -8,12 +8,18 @@ export function Breadcrumbs({ items }: { items: { label: string; to?: string }[]
   return (
     <nav aria-label="Breadcrumb" className="border-b bg-muted/60">
       <ol className="container-x flex flex-wrap items-center gap-1 py-3 text-xs text-muted-foreground">
-        <li><Link to="/" className="hover:text-primary">Home</Link></li>
+        <li>
+          <Link to="/" className="hover:text-primary">
+            Home
+          </Link>
+        </li>
         {items.map((it) => (
           <li key={it.label} className="flex items-center gap-1">
             <ChevronRight className="size-3" />
             {it.to ? (
-              <Link to={it.to} className="hover:text-primary">{it.label}</Link>
+              <Link to={it.to} className="hover:text-primary">
+                {it.label}
+              </Link>
             ) : (
               <span className="font-medium text-foreground">{it.label}</span>
             )}
@@ -29,7 +35,11 @@ export function PageHeading({ title, subtitle }: { title: string; subtitle?: str
     <section className="bg-charcoal text-charcoal-foreground">
       <div className="container-x py-10 md:py-14">
         <h1 className="font-display text-3xl font-bold md:text-4xl">{title}</h1>
-        {subtitle && <p className="mt-3 max-w-2xl text-sm text-charcoal-foreground/80 md:text-base">{subtitle}</p>}
+        {subtitle && (
+          <p className="mt-3 max-w-2xl text-sm text-charcoal-foreground/80 md:text-base">
+            {subtitle}
+          </p>
+        )}
       </div>
     </section>
   );

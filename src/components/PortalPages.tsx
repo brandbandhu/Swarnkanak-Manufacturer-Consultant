@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "@/lib/router-compat";
 import {
   Bell,
   CalendarDays,

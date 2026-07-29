@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "@/lib/router-compat";
 import { Heart, ShoppingCart, Eye, FileText } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -32,7 +32,9 @@ export function ProductCard({ product, className }: { product: Product; classNam
         </Link>
         <div className="absolute left-3 top-3 flex flex-col gap-1">
           {pct > 0 && <Badge className="bg-primary text-primary-foreground">{pct}% OFF</Badge>}
-          {product.bestseller && <Badge className="bg-warning text-warning-foreground">Bestseller</Badge>}
+          {product.bestseller && (
+            <Badge className="bg-warning text-warning-foreground">Bestseller</Badge>
+          )}
         </div>
         <button
           type="button"
@@ -48,7 +50,9 @@ export function ProductCard({ product, className }: { product: Product; classNam
       </div>
 
       <div className="flex flex-1 flex-col gap-2 p-4">
-        <p className="text-xs font-medium uppercase tracking-wide text-secondary">{product.category}</p>
+        <p className="text-xs font-medium uppercase tracking-wide text-secondary">
+          {product.category}
+        </p>
         <h3 className="font-display text-base leading-snug font-semibold">
           <Link to="/products/$slug" params={{ slug: product.slug }} className="hover:text-primary">
             {product.name}
@@ -62,18 +66,28 @@ export function ProductCard({ product, className }: { product: Product; classNam
         <div className="mt-auto space-y-3 pt-2">
           <div className="flex items-center gap-2">
             {product.purchaseMode === "quotation" ? (
-              <span className="font-display text-lg font-semibold text-secondary">Price on Request</span>
+              <span className="font-display text-lg font-semibold text-secondary">
+                Price on Request
+              </span>
             ) : (
               <>
-                <span className="font-display text-lg font-semibold">{formatINR(product.offerPrice)}</span>
+                <span className="font-display text-lg font-semibold">
+                  {formatINR(product.offerPrice)}
+                </span>
                 {pct > 0 && (
-                  <span className="text-sm text-muted-foreground line-through">{formatINR(product.price)}</span>
+                  <span className="text-sm text-muted-foreground line-through">
+                    {formatINR(product.price)}
+                  </span>
                 )}
               </>
             )}
           </div>
           <div className="flex items-center justify-between text-xs">
-            <span className={product.stock > 0 ? "font-medium text-success" : "font-medium text-destructive"}>
+            <span
+              className={
+                product.stock > 0 ? "font-medium text-success" : "font-medium text-destructive"
+              }
+            >
               {product.stock > 0 ? `In Stock (${product.stock})` : "Out of Stock"}
             </span>
             <span className="text-muted-foreground">

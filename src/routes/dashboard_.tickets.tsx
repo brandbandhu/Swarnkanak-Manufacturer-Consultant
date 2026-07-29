@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/router-compat";
 import { DashboardTicketsPage } from "@/components/PortalPages";
 
 export const Route = createFileRoute("/dashboard_/tickets")({ component: DashboardTicketsPage });
